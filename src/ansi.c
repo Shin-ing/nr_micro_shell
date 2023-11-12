@@ -142,8 +142,9 @@ char ansi_get_char(char x, ansi_st *ansi)
         if (('a' <= x && 'z' >= x) || ('A' <= x && 'Z' >= x) || x== '~')
         {
             cmd_id = ansi_search_char(x, nr_ansi_in_cmd);
-            nr_ansi_in_cmd_fun[cmd_id](ansi);
-
+	    if (-1 != cmd_id) {
+                nr_ansi_in_cmd_fun[cmd_id](ansi);
+            }
             ansi->cmd_num = 0;
             ansi->combine_state = ANSI_NO_CTRL_CHAR;
         }
