@@ -189,7 +189,8 @@ char *shell_cmd_complete(shell_st *shell, char *str)
 	char *best_matched = NULL;
 	unsigned char min_position = 255;
 
-	for (i = 0; shell->static_cmd[i].cmd[0] != '\0'; i++)
+	// for (i = 0; shell->static_cmd[i].cmd[0] != '\0'; i++)
+        for (i = 0; shell->static_cmd[i].fp != NULL; i++)
 	{
 		temp = NULL;
 		temp = strstr(shell->static_cmd[i].cmd, str);
